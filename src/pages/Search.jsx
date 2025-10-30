@@ -14,5 +14,6 @@ export default function Search() {
   return (
   <>
    {pokemon.map(el => <Card key={el.id} pokemon={el} />)}
-  </>)
+  </>
+  )
 }
