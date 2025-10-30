@@ -1,14 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchMultiplePokemonsById = createAsyncThunk(
-   'pokemon/fetchMultiplePokemonsById',
-    async (maxPokemonId) => {
-    const numberArray = Array.from({ length: maxPokemonId }, (_, i) => i + 1)
-
+export const fetchMultiplePokemonById = createAsyncThunk(
+  'pokemon/fetchMultiplePokemonById',
+  async (maxPokemonId) => {
+    const numberArray = Array.from({ length: maxPokemonId }, (_, i) =>  i + 1 )
+    
     const fetchAPI = async (pokemonId) => {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`)
       const data = await response.json()
-    
+      
       const pokemonData = {
         id: pokemonId,
         name: data.names.find(el => el.language.name === 'ko').name,
@@ -18,7 +18,7 @@ export const fetchMultiplePokemonsById = createAsyncThunk(
       }
       return pokemonData
     }
-   
-     return await Promise.all(numberArray.map((el) => fetchAPI(el)))
-    }
+
+    return await Promise.all(numberArray.map((el) => fetchAPI(el)))
+  }
 )
