@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     ditpatch(fetchMultiplePokemonById(151))
   }, [])
-
+  
   return (
     <>
      <h1 className='border-t-[50px] border-t-[red] bg-black text-white text-[40px] text-center'>포켓몬 도감</h1>
